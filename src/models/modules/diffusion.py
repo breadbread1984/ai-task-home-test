@@ -37,8 +37,8 @@ class Diffusion(nn.Module):
     input = noise
     for t in self.noise_scheduler.timesteps:
       with torch.no_grad():
-        noisy_residual = model(input, t).sample # epsilon(x_t, t)
-      previous_noisy_sample = scheduler.step(noisy_residual, t, input).prev_sample # x_{t-1}
+        noisy_residual = self.model(input, t).sample # epsilon(x_t, t)
+      previous_noisy_sample = self.noise_scheduler.step(noisy_residual, t, input).prev_sample # x_{t-1}
       input = previous_noisy_sample
     image = (input / 2 + 0.5).clamp(0,1).squeeze()
     image = torch.round(torch.permute(image, (1,2,0)) * 255).to(torch.uint8).cpu().numpy()[:,:,::-1]
