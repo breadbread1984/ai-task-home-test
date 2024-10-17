@@ -107,7 +107,7 @@ class MNISTGANModel(LightningModule):
             pred_real = self.discriminator(real, y)
 
             # TODO: Calculate loss for fake images
-            pred_fake = self.discriminator(fake, y)
+            pred_fake = self.discriminator(fake.detach(), y)
 
             # TODO: Calculate total discriminator loss
             loss = self.adversarial_loss(
