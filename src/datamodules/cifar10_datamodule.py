@@ -23,10 +23,10 @@ class CIFAR10DataModule(LightningDataModule):
     self.pin_memory = pin_memory
     self.img_size = img_size
 
-    self.transforms = transforms.Compose(
+    self.transforms = transforms.Compose([
       transforms.ToTensor(),
       transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
-    )
+    ])
 
     self.dims = (3, self.img_size, self.img_size)
     self.data_train: Optional[Dataset] = None
