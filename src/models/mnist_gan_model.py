@@ -103,7 +103,7 @@ class MNISTGANModel(LightningModule):
 
             # TODO: Calculate total discriminator loss
             loss = real_loss + fake_loss
-        log_dict['loss'] = loss
+        log_dict['gen_loss' if optimizer_idx == 0 else 'dis_loss'] = loss
 
         return log_dict, loss
 
@@ -118,6 +118,7 @@ class MNISTGANModel(LightningModule):
         with torch.no_grad():
           fake = self.generator(noise, y).cpu().squeeze(dim = 0).permute(1,2,0).numpy() # fake.shape = (32,32,1)
           img = ((fake + 1) / 2 * 255).astype(np.uint8)
+          np.save('img.npy', img)
 
         for logger in self.trainer.logger:
             if type(logger).__name__ == "WandbLogger":
