@@ -40,7 +40,7 @@ class CIFAR10DiffusionModule(LightningModule):
   def step(self, batch, batch_idx):
     log_dict = {}
     x, _ = batch # train non conditional diffusion, use no class
-    t = torch.randint(0, 1000, (x.size(0),), device = self.device).long()
+    t = torch.randint(0, 1000, (x.size(0),), device = next(self.parameters()).device).long()
     noise = torch.randn_like(x)
     x_noisy = x + noise * t[:, None, None, None] # forward process
     output = self.model(x_noisy, t)

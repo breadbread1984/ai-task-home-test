@@ -73,7 +73,7 @@ class MNISTGANModel(LightningModule):
         real, y = batch
 
         # TODO: Create noise and labels for generator input
-        noise = torch.normal(mean = 0, std = 1, size = (real.shape[0], 64))
+        noise = torch.normal(mean = 0, std = 1, size = (real.shape[0], 64)).to(next(self.parameters()).device)
 
         if optimizer_idx == 0 or not self.training:
             # TODO: generate images and calculate the adversarial loss for the generator
@@ -112,8 +112,8 @@ class MNISTGANModel(LightningModule):
         #     : at the end of each epoch
 
         # TODO: Create fake images
-        noise = torch.normal(mean = 0, std = 1, size = (1, 64))
-        y = torch.randint(low = 0, high = 10, size = (1,))
+        noise = torch.normal(mean = 0, std = 1, size = (1, 64)).to(next(self.parameters()).device)
+        y = torch.randint(low = 0, high = 10, size = (1,)).to(next(self.parameters()).device)
         self.generator.eval()
         with torch.no_grad():
           fake = self.generator(noise, y).cpu().squeeze(dim = 0).permute(1,2,0).numpy() # fake.shape = (32,32,1)
