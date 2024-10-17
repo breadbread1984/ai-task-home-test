@@ -1,6 +1,7 @@
 from typing import Union, Dict, Any, Tuple, Optional
 
 import wandb
+import numpy as np
 import torch
 import torch.nn as nn
 from torch import Tensor
@@ -116,10 +117,10 @@ class MNISTGANModel(LightningModule):
         self.generator.eval()
         with torch.no_grad():
           fake = self.generator(noise, y).cpu().squeeze(dim = 0).permute(1,2,0).numpy() # fake.shape = (32,32,1)
-          img = ((fake + 1) / 2 * 255).to(np.uint8)
+          img = ((fake + 1) / 2 * 255).astype(np.uint8)
 
         for logger in self.trainer.logger:
             if type(logger).__name__ == "WandbLogger":
                 # TODO: log fake images to wandb (https://docs.wandb.ai/guides/track/log/media)
                 #     : replace `None` with your wandb Image object
-                logger.experiment.log({"gen_imgs": [wandb.Image(img), caption = f"Epoch {self.current_epoch}"]})
+                logger.experiment.log({"gen_imgs": [wandb.Image(img, caption = f"Epoch {self.current_epoch}")]})

@@ -54,4 +54,4 @@ class CIFAR10DiffusionModule(LightningModule):
       image = self.model.sample()
     for logger in self.trainer.logger:
       if type(logger).__name__ == "WandbLogger":
-        logger.experiment.log({"gen_imgs": image})
+        logger.experiment.log({"gen_imgs": [wandb.Image(image, caption = f"Epoch {self.current_epoch}")]})
