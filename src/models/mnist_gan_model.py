@@ -20,7 +20,7 @@ class MNISTGANModel(LightningModule):
 
         self.generator = generator
         self.discriminator = discriminator
-        self.adversarial_loss = torch.nn.MSELoss()
+        self.adversarial_loss = torch.nn.BCELoss()
 
     def forward(self, z, labels) -> Tensor:
         return self.generator(z, labels)
@@ -101,15 +101,16 @@ class MNISTGANModel(LightningModule):
             fake = self.generator(noise, y)
 
             # TODO: Calculate loss for real images
-            pred = self.discriminator(real, y)
-            real_loss = self.adversarial_loss(pred, torch.ones_like(pred, device = pred.device))
+            pred_real = self.discriminator(real, y)
 
             # TODO: Calculate loss for fake images
-            fake_loss = self.discriminator(fake.detach(), y)
-            fake_loss = self.adversarial_loss(pred, torch.zeros_like(pred, device = pred.device))
+            pred_fake = self.discriminator(fake, y)
 
             # TODO: Calculate total discriminator loss
-            loss = real_loss + fake_loss
+            loss = self.adversarial_loss(
+              torch.cat([pred_real, pred_fake], dim = 0),
+              torch.cat([torch.ones_like(pred_real, device = pred_real.device),
+                         torch.zeros_like(pred_fake, device = pred_fake.device)], dim = 0))
         log_dict['gen_loss' if optimizer_idx == 0 else 'dis_loss'] = loss
 
         return log_dict, loss
