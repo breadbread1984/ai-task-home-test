@@ -41,5 +41,5 @@ class Diffusion(nn.Module):
       previous_noisy_sample = self.noise_scheduler.step(noisy_residual, t, input).prev_sample # x_{t-1}
       input = previous_noisy_sample
     image = (input / 2 + 0.5).clamp(0,1).squeeze()
-    image = torch.round(torch.permute(image, (1,2,0)) * 255).to(torch.uint8).cpu().numpy()[:,:,::-1]
+    image = torch.round(torch.permute(image, (1,2,0)) * 255).to(torch.uint8).cpu().numpy()
     return image
