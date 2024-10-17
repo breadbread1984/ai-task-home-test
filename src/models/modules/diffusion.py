@@ -35,7 +35,7 @@ class Diffusion(nn.Module):
   def sample(self):
     noise = torch.randn((1,3,self.image_size,self.image_size)).to(next(self.parameters()).device)
     input = noise
-    for t in scheduler.timesteps:
+    for t in self.noise_scheduler.timesteps:
       with torch.no_grad():
         noisy_residual = model(input, t).sample # epsilon(x_t, t)
       previous_noisy_sample = scheduler.step(noisy_residual, t, input).prev_sample # x_{t-1}
