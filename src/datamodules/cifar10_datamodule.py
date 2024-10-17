@@ -4,7 +4,7 @@ from typing import Optional, Tuple
 from torch.utils.data import DataLoader, Dataset, random_split
 from pytorch_lightning import LightningDataModule
 from torchvision.datasets import CIFAR10
-from torchvision.transformers import transforms
+from torchvision.transforms import transforms
 
 class CIFAR10DataModule(LightningDataModule):
   def __init__(self,
