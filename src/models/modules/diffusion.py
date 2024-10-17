@@ -27,14 +27,14 @@ class Diffusion(nn.Module):
       ),
     )
     self.noise_scheduler = DDPMScheduler(num_train_timesteps = timesteps)
-    self.timesteps = timesteps
+    self.timesteps_ = timesteps
     self.image_size = image_size
   def forward(self, noisy_image, timesteps):
     noise_pred = self.model(noisy_image, timesteps).sample # epsilon
     return noise_pred
   @property
   def timesteps(self):
-    return self.timesteps
+    return self.timesteps_
   def sample(self):
     noise = torch.randn((1,3,self.image_size,self.image_size)).to(next(self.parameters()).device)
     input = noise
