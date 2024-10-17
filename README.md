@@ -6,6 +6,10 @@
 
 - First, load trained model to nn.Module without pytorch lightning dependency. Second, convert the model to onnx. Then, the onnx can be compiled into TensorRT engine and run on Nvidia inference card. Last but not least, the onnx can be also compiled and calibrated into quantized TensorRT engine.
 
+- Training with multiple GPU can be achieved by data parallelism or model parallelism. Pytorch lightning can train model with data parallelism by setting the device number and the data parallelism strategy at Trainer's construction arguments.
+
+# 
+
 <div align="center">
 
 # Pantheon Lab Programming Assignment
