@@ -1,0 +1,20 @@
+# @package _global_
+#
+# to execute this experiment run:
+# python run.py experiment=train_cifar10_diffusion.yaml
+
+defaults:
+  - override /trainer: default.yaml
+  - override /model: cifar10_diffusion_model.yaml
+  - override /datamodule: cifar10_datamodule.yaml
+  - override /callbacks: default.yaml
+  - override /logger: wandb.yaml
+
+seed: 12345
+
+trainer:
+  gpus: 0
+  max_epochs: 10
+
+datamodule:
+  batch_size: 64
