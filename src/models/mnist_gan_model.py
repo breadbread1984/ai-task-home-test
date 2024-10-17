@@ -72,7 +72,7 @@ class MNISTGANModel(LightningModule):
         real, y = batch
 
         # TODO: Create noise and labels for generator input
-        noise = torch.normal(mean = 0, std = 1, size = (x.shape[0], 64))
+        noise = torch.normal(mean = 0, std = 1, size = (real.shape[0], 64))
 
         if optimizer_idx == 0 or not self.training:
             # TODO: generate images and calculate the adversarial loss for the generator
@@ -93,11 +93,11 @@ class MNISTGANModel(LightningModule):
             fake = self.generator(noise, y)
 
             # TODO: Calculate loss for real images
-            pred = self.discriminator(real)
+            pred = self.discriminator(real, y)
             real_loss = self.adversarial_loss(pred, torch.ones_like(pred, device = pred.device))
 
             # TODO: Calculate loss for fake images
-            fake_loss = self.discriminator(fake)
+            fake_loss = self.discriminator(fake, y)
             fake_loss = self.adversarial_loss(pred, torch.zeros_like(pred, device = pred.device))
 
             # TODO: Calculate total discriminator loss
@@ -113,10 +113,12 @@ class MNISTGANModel(LightningModule):
         # TODO: Create fake images
         noise = torch.normal(mean = 0, std = 1, size = (1, 64))
         y = torch.randint(low = 0, high = 10, size = (1,))
-        fake = self.generator(noise, y)
+        self.generator.eval()
+        with torch.no_grad():
+          fake = self.generator(noise, y) # fake.shape = (1,1,32,32)
 
         for logger in self.trainer.logger:
             if type(logger).__name__ == "WandbLogger":
                 # TODO: log fake images to wandb (https://docs.wandb.ai/guides/track/log/media)
                 #     : replace `None` with your wandb Image object
-                logger.experiment.log({"gen_imgs": fake})
+                logger.experiment.log({"gen_imgs": fake.cpu().squeeze(dim = 0).permute(1,2,0).numpy()})

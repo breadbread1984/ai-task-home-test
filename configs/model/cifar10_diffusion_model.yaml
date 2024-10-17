@@ -1,0 +1,7 @@
+_target_: src.models.cifar10_diffusion_model.CIFAR10DiffusionModule
+
+model:
+  _target_: src.models.modules.diffusion.Diffusion
+  image_size: 32
+  in_channels: 3
+  out_channels: 3
