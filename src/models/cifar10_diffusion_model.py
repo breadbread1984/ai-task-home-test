@@ -53,7 +53,6 @@ class CIFAR10DiffusionModule(LightningModule):
     self.model.eval()
     with torch.no_grad():
       image = self.model.sample()
-      np.save('sample.npy', image)
     for logger in self.trainer.logger:
       if type(logger).__name__ == "WandbLogger":
         logger.experiment.log({"gen_imgs": [wandb.Image(image, caption = f"Epoch {self.current_epoch}")]})
