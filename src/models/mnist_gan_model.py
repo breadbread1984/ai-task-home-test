@@ -44,7 +44,10 @@ class MNISTGANModel(LightningModule):
         return loss
 
     def validation_step(self, batch, batch_idx) -> Union[Tensor, Dict[str, Any], None]:
-        log_dict, loss = self.step(batch, batch_idx)
+        gen_dict, loss = self.step(batch, batch_idx, 0)
+        dist_dict, loss = self.step(batch, batch_idx, 1)
+        log_dict = gen_dict
+        log_dict.update(dist_dict)
         self.log_dict({"/".join(("val", k)): v for k, v in log_dict.items()})
         return None
 
