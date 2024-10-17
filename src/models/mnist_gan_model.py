@@ -50,9 +50,16 @@ class MNISTGANModel(LightningModule):
 
     def test_step(self, batch, batch_idx) -> Union[Tensor, Dict[str, Any], None]:
         # TODO: if you have time, try implementing a test step
-        log_dict, loss = self.step(batch, batch_idx)
+        real, y = batch
+        fake = self.generator(noise, y)
+        pred_fake = self.discriminator(fake, y)
+        pred_real = self.discriminator(real, y)
+        gen_loss = self.adversarial_loss(pred_fake, torch.ones_like(pred_fake, device = pred_fake.device))
+        dis_loss = self.adversarial_loss(pred_real, torch.ones_like(pred_real, device = pred_real.device)) + \
+                   self.adversarial_loss(pred_fake, torch.zeros_like(pred_fake, device = pred_fake.device))
+        log_dict = {'gen_loss': gen_loss, 'dis_loss': dis_loss}
         self.log_dict({"/".join(("test, k")): v for k, v in log_dict.items()})
-        return None
+        return log_dict
 
     def step(self, batch, batch_idx, optimizer_idx=None) -> Tuple[Dict[str, Tensor], Optional[Tensor]]:
         # TODO: implement the step method of the GAN model.
