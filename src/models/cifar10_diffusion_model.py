@@ -23,12 +23,12 @@ class CIFAR10DiffusionModule(LightningModule):
     return torch.optim.Adam(self.parameters(), lr = self.hparams.lr)
 
   def training_step(self, batch, batch_idx):
-    log_dict, loss = self.step(batch, batch_idx, optimizer_idx)
+    log_dict, loss = self.step(batch, batch_idx)
     self.log_dict({"/".join(("train", k)): v for k, v in log_dict.items()})
     return loss
 
   def validation_step(self, batch, batch_idx):
-    log_dict, loss = self.step(batch, batch_idx, optimizer_idx)
+    log_dict, loss = self.step(batch, batch_idx)
     self.log_dict({"/".join(("train", k)): v for k, v in log_dict.items()})
     return None
 
