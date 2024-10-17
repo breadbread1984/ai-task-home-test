@@ -32,6 +32,14 @@
 
 <div align="center">
 
+# Chatbot Assignments
+
+|id | model | URL |
+|---|-----------|-----|
+| 1 | Llama3.1 70B | https://hf.co/chat/assistant/67110fa6dfff16d21b4219d9 |
+| 2 | Qwen 2.5 72B | https://hf.co/chat/assistant/671110db95657d550065a26e |
+| 3 | 
+
 # Pantheon Lab Programming Assignment
 
 <a href="https://pytorch.org/get-started/locally/"><img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white"></a>
