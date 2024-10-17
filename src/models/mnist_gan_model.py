@@ -123,13 +123,13 @@ class MNISTGANModel(LightningModule):
         #     : at the end of each epoch
 
         # TODO: Create fake images
-        noise = torch.normal(mean = 0, std = 1, size = (1, 64)).to(next(self.parameters()).device)
-        y = torch.randint(low = 0, high = 10, size = (1,)).to(next(self.parameters()).device)
+        noise = torch.normal(mean = 0, std = 1, size = (10, 64)).to(next(self.parameters()).device)
+        y = torch.arange(10, dtype = torch.int32).to(next(self.parameters()).device)
         self.generator.eval()
         with torch.no_grad():
-          fake = self.generator(noise, y).cpu().squeeze(dim = 0).permute(1,2,0).numpy() # fake.shape = (32,32,1)
+          fake = self.generator(noise, y).cpu().permute(0,2,3,1).numpy() # fake.shape = (10,32,32,1)
+          fake = np.reshape(np.transpose(np.reshape(fake, (2,5,32,32,1)), (0,2,1,3,4)), (2*32,5*32,1))
           img = ((fake + 1) / 2 * 255).astype(np.uint8)
-          np.save('img.npy', img)
 
         for logger in self.trainer.logger:
             if type(logger).__name__ == "WandbLogger":
