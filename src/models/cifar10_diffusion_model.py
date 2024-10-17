@@ -19,7 +19,7 @@ class CIFAR10DiffusionModule(LightningModule):
   def forward(self, x, t):
     self.model(x, t)
 
-  def configure_optimizer(self):
+  def configure_optimizers(self):
     return torch.optim.Adam(self.parameters(), lr = self.hparams.lr)
 
   def training_step(self, batch, batch_idx):
