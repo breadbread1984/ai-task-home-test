@@ -38,9 +38,7 @@
 |---|-----------|-----|
 | 1 | Llama3.1 70B | https://hf.co/chat/assistant/67110fa6dfff16d21b4219d9 |
 | 2 | Qwen 2.5 72B | https://hf.co/chat/assistant/671110db95657d550065a26e |
-| 3 | Mistral-Nemo-2407 | https://hf.co/chat/assistant/6711b2a6ff2103a907c11ace | 
-
-# LLM Evaluation
+| 3 | Mistral-Nemo-2407 | https://hf.co/chat/assistant/6711b2a6ff2103a907c11ace |
 
 ## Content Quality
 
@@ -54,6 +52,8 @@ prompt: An empty bus has 10 passengers on the first stop. At the next stop, 5 pa
 | 2  | The bus passed a total of 3 stops. The first stop where 10 passengers got on, the second stop where 5 passengers got on and 7 got off, and the third stop where 3 passengers got on and 1 got off.       |
 | 3  | Let's analyze the information:<br/><br/>    The bus starts empty, then 10 passengers get on at the first stop.<br/>    At the next stop, 5 passengers get on and 7 passengers get off, leaving 10 + 5 - 7 = 8 passengers on the bus.<br/>    At the next stop, 3 passengers get on and 1 passenger gets off, leaving 8 + 3 - 1 = 10 passengers on the bus.<br/><br/>Since the bus has 10 passengers on it again, and we've already counted the first stop, we can conclude that the bus has passed a total of 3 stops.<br/><br/>Answer: 3 stops. |
 
+observation: three assistants can all answer correctly according to the relevant information in the question.
+
 ### logical reasoning ability
 
 prompt: My sister was twice my age when I was 2 years old. How old will my sister be when I am 30 years old?
@@ -64,9 +64,23 @@ prompt: My sister was twice my age when I was 2 years old. How old will my siste
 | 2  | When you were 2 years old, your sister was twice your age, which means she was 4 years old. The age difference between you and your sister is 2 years. Therefore, when you are 30 years old, your sister will be 32 years old. |
 | 3  | A nice age-related puzzle!<br/><br/>Let's break it down step by step:<br/><br/>    When you were 2 years old, your sister was twice your age, which means she was 2 x 2 = 4 years old.<br/>    Now, let's find the age difference between you and your sister: 4 (her age) - 2 (your age) = 2 years.<br/>    This means that your sister is always 2 years older than you.<br/>    Fast forward to when you are 30 years old. To find your sister's age, add the age difference to your age: 30 + 2 = 32.<br/><br/>So, when you are 30 years old, your sister will be 32 years old.|
 
+observation: three assistans all have logical reasoning ability to some extent.
+
 ### hallucination detection
 
+prompt: who is Allan Pineda Lindo's father?
+
+| id | answer |
+|----|--------|
+| 1  |I don't know |
+| 2  |Allan Pineda Lindo, also known as apl.de.ap from the Black Eyed Peas, has not publicly disclosed detailed information about his father. He was raised by his mother and grandmother in the Philippines. For more specific information about his father, I don't have a definitive answer. |
+| 3  | I think you might be thinking of Allan Pineda Lindo, better known as apl.de.ap, a member of the Black Eyed Peas!<br/><br/>According to my knowledge, apl.de.ap's father is Aniceto Pineda, a Filipino. |
+
+observation: minstral is haunted by hallucination deteciton by answering a none-public known question.
+
 ## Contextual Understanding
+
+
 
 ### Contextual Relevancy
 
