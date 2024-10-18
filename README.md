@@ -30,8 +30,6 @@
 
 - The second difficulty I met is unbalance convergence speeds between generator and discriminator. I solve the problem by add sigmoid at the end of the discriminator and use binary crossentropy to supervise discriminator to slow convergence of discriminator. The GAN can converge perfectly after the changes. 
 
-<div align="center">
-
 # Chatbot Assignments
 
 |id | model | URL |
