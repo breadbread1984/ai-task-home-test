@@ -178,6 +178,22 @@ Top-p sets all logits except the largest several logits to -inf. The largest sev
 
 - poor performance when training with small dataset.
 
+## answer to question 4
+
+Retrieval augmented generation is a method proposed by Meta. This method mitigates the hallucination problem of LLM by giving LLM relative facts retrievaled from a vector database.
+
+### RAG method
+
+- split text into chunks and extract feature vector of the text with BERT.
+
+- use the feature vectors as key to the original text chunks to build a vector database.
+
+- retrieve relevant text chunks in the vector database with user given prompt.
+
+- put the text chunks at the head of user's prompt and feed to LLM.
+
+- LLM return reliable answer to the question.
+
 # Pantheon Lab Programming Assignment
 
 <a href="https://pytorch.org/get-started/locally/"><img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white"></a>
