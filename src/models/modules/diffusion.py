@@ -29,7 +29,6 @@ class Diffusion(nn.Module):
       ),
     )
     self.noise_scheduler = DDIMScheduler(num_train_timesteps = timesteps)
-    self.timesteps = timesteps
     self.image_size = image_size
   def forward(self, noisy_image, timesteps):
     noise_pred = self.model(noisy_image, timesteps).sample # epsilon
