@@ -130,7 +130,7 @@ The token is sampled according to a distribution which is derived from the softm
 
 #### temperature
 
-Logits are divided by user defined temperature. The higher temperature, the closer the distribution is to the uniform distribution. In other words, higher temperature encourage the diversity of sampled token.
+Logits are divided by user defined temperature **t**. The higher temperature, the closer the distribution is to the uniform distribution. In other words, higher temperature encourage the diversity of sampled token.
 
 #### top-k
 
@@ -139,6 +139,30 @@ Top-k sets all logits except the largest **k** logits to -inf. This logit warper
 #### top-p
 
 Top-p sets all logits except the largest several logits to -inf. The largest several logits takes account for a user defined percent **p**. This logit warper also narrows the choice of sampled tokens.
+
+## answer to question 3
+
+- template-based prompt: Use a fix leading system prompt which states how the LLM should process the user given prompt.
+
+- rule-based prompt: Define a fixed rule in leading system prompt on how to deal with user given prompt.
+
+- machine learning-based prompt: This kind of prompt is more commonly known as p-tuning or soft prompting. This method trains a leading embedding sequence as the prefix of user's embedding sequence to achieve certain behaviors.
+
+### hard prompt (template-based prompt & ruled-based prompt)
+
+#### pros
+
+- no finetuning. save time for training
+
+- 
+
+#### cons
+
+### soft prompt
+
+#### pros
+
+#### cons
 
 # Pantheon Lab Programming Assignment
 
