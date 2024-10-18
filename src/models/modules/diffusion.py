@@ -36,7 +36,7 @@ class Diffusion(nn.Module):
   def sample(self):
     noise = torch.randn((1,3,self.image_size,self.image_size)).to(next(self.parameters()).device)
     with torch.no_grad():
-      for t in self.noise_scheduler.timesteps:
+      for t in reversed(range(self.noise_scheduler.num_train_timesteps)):
         model_output = self.model(noise, t).sample # epsilon(x_t, t)
         noise = self.noise_scheduler.step(model_output, t, noise).prev_sample # x_{t-1}
     image = ((input + 1) * 127.5).squeeze(dim = 0).to(torch.uint8)
