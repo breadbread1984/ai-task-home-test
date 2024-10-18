@@ -1,6 +1,6 @@
 _target_: src.models.cifar10_diffusion_model.CIFAR10DiffusionModule
 
-lr: 1e-4
+lr: 2e-4
 
 model:
   _target_: src.models.modules.diffusion.Diffusion

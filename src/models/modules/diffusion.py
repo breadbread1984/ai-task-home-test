@@ -14,7 +14,7 @@ class Diffusion(nn.Module):
       in_channels = in_channels,
       out_channels = out_channels,
       layers_per_block = 2,
-      block_out_channels = (128, 256, 512),
+      block_out_channels = (96, 192, 192),
       down_block_types=(
         "DownBlock2D",
         "DownBlock2D",
@@ -40,6 +40,6 @@ class Diffusion(nn.Module):
         noisy_residual = self.model(input, t).sample # epsilon(x_t, t)
       previous_noisy_sample = self.noise_scheduler.step(noisy_residual, t, input).prev_sample # x_{t-1}
       input = previous_noisy_sample
-    image = (input / 2 + 0.5).clamp(0,1).squeeze()
-    image = torch.round(torch.permute(image, (1,2,0)) * 255).to(torch.uint8).cpu().numpy()
+    image = ((input + 1) * 127.5).squeeze(dim = 0).to(torch.uint8)
+    image = torch.permute(image, (1,2,0)).cpu().numpy()
     return image

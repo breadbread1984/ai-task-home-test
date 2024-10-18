@@ -24,6 +24,7 @@ class CIFAR10DataModule(LightningDataModule):
     self.img_size = img_size
 
     self.transforms = transforms.Compose([
+      transforms.RandomHorizontalFlip(),
       transforms.ToTensor(),
       transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
     ])
