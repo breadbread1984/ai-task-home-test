@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-from diffusers import UNet2DModel, DDPMScheduler
+from diffusers import UNet2DModel, DDIMScheduler
 
 class Diffusion(nn.Module):
   def __init__(self, image_size: int, in_channels: int, out_channels: int, timesteps: int):
@@ -28,7 +28,7 @@ class Diffusion(nn.Module):
         "UpBlock2D"
       ),
     )
-    self.noise_scheduler = DDPMScheduler(num_train_timesteps = timesteps)
+    self.noise_scheduler = DDIMScheduler(num_train_timesteps = timesteps)
     self.timesteps = timesteps
     self.image_size = image_size
   def forward(self, noisy_image, timesteps):
