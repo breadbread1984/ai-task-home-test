@@ -38,9 +38,11 @@
 | 2 | Qwen 2.5 72B | https://hf.co/chat/assistant/671110db95657d550065a26e |
 | 3 | Mistral-Nemo-2407 | https://hf.co/chat/assistant/6711b2a6ff2103a907c11ace |
 
-## Content Quality
+## answer to question 1
 
-### answer relevance
+### Content Quality
+
+#### answer relevance
 
 prompt: An empty bus has 10 passengers on the first stop. At the next stop, 5 passengers get on and 7 passengers get off. At the next stop, 3 passengers get on and 1 passenger gets off. How many stops did the bus pass in total?
 
@@ -52,7 +54,7 @@ prompt: An empty bus has 10 passengers on the first stop. At the next stop, 5 pa
 
 observation: three assistants can all answer correctly according to the relevant information in the question. the question give a lot of unrelevent information to the question. assistants can filter out irrelevant information.
 
-### logical reasoning ability
+#### logical reasoning ability
 
 prompt: My sister was twice my age when I was 2 years old. How old will my sister be when I am 30 years old?
 
@@ -64,7 +66,7 @@ prompt: My sister was twice my age when I was 2 years old. How old will my siste
 
 observation: three assistans all have logical reasoning ability to some extent. the question is quote from the paper proposed chain-of-though algorithm. LLM with lower logical reasoning ability need to solve it with multiple steps of thought generation.
 
-### hallucination detection
+#### hallucination detection
 
 prompt: who is Allan Pineda Lindo's father?
 
@@ -74,11 +76,11 @@ prompt: who is Allan Pineda Lindo's father?
 | 2  |Allan Pineda Lindo, also known as apl.de.ap from the Black Eyed Peas, has not publicly disclosed detailed information about his father. He was raised by his mother and grandmother in the Philippines. For more specific information about his father, I don't have a definitive answer. |
 | 3  | I think you might be thinking of Allan Pineda Lindo, better known as apl.de.ap, a member of the Black Eyed Peas!<br/><br/>According to my knowledge, apl.de.ap's father is Aniceto Pineda, a Filipino. |
 
-observation: mistral is haunted by hallucination problem by responsing to inqueries about facts that are not publicly available. apl.de.ap never reveal the identity of biological father.
+observation: mistral is haunted by hallucination problem by responsing to inqueries about facts that are not publicly available. apl.de.ap never revealed the identity of his biological father.
 
-## Contextual Understanding
+### Contextual Understanding
 
-### Contextual Relevancy
+#### Contextual Relevancy
 
 prompt: A user talks about their interest in photography and mentions they recently bought a new DSLR camera. Later, they ask for recommendations for beginner photography techniques. Provide relevant advice that considers their recent purchase.
 
@@ -90,7 +92,7 @@ prompt: A user talks about their interest in photography and mentions they recen
 
 observation: all assitants can give correct suggestions based on context. the right recommandation to beginner should be among learn the basics of exposure, practice composition, explore different modes, play with lighting and post-processing basics. the assistants totally get the idea of the context.
 
-## Language Fluency
+### Language Fluency
 
 prompt: write a poem in Chinese.
 
@@ -102,9 +104,11 @@ prompt: write a poem in Chinese.
 
 observation: Writing poetry can test the language mastery of the big language model. assistant 1 (Llama3.1) generate sentence "月亮升起在夜空" which uses a word order that is not very Chinese. assistant 2 (Qwen2) generate the most fluent poetry which rhymes. Therefore, Qwen2 has the highest fluency in Chinese.
 
-## Ethical Considerations
+### Ethical Considerations
 
-prompt: 
+prompt:
+
+## answer to question 2 
 
 # Pantheon Lab Programming Assignment
 
