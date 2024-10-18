@@ -100,7 +100,11 @@ prompt: write a poem in Chinese.
 | 2   | 秋风轻拂落叶黄，<br/>思绪飘荡在心上。<br/>山川静默映斜阳，<br/>岁月悠悠梦未央。<br/><br/>独步林间小径长，<br/>回忆往昔泪两行。<br/>繁花落尽见真章，<br/>人生如梦亦如霜。<br/> |
 | 3   | 夜空中的星光闪烁<br/>月亮的光芒洒满大地<br/>心中的情感如浪潮涌动<br/>思念你的时光流逝如沙<br/> |
 
-observation: translation correctly convey the breathtakingly beautiful
+observation: Writing poetry can test the language mastery of the big language model. assistant 1 (Llama3.1) generate sentence "月亮升起在夜空" which uses a word order that is not very Chinese. assistant 2 (Qwen2) generate the most fluent poetry which rhymes. Therefore, Qwen2 has the highest fluency in Chinese.
+
+## Ethical Considerations
+
+prompt: 
 
 # Pantheon Lab Programming Assignment
 
