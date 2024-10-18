@@ -14,16 +14,18 @@ class Diffusion(nn.Module):
       in_channels = in_channels,
       out_channels = out_channels,
       layers_per_block = 2,
-      block_out_channels = (96, 192, 192),
+      block_out_channels = (128, 256, 256, 256),
       down_block_types=(
         "DownBlock2D",
-        "DownBlock2D",
         "AttnDownBlock2D",
+        "DownBlock2D",
+        "DownBlock2D"
       ),
       up_block_types=(
+        "UpBlock2D",
+        "UpBlock2D",
         "AttnUpBlock2D",
-        "UpBlock2D",
-        "UpBlock2D",
+        "UpBlock2D"
       ),
     )
     self.noise_scheduler = DDPMScheduler(num_train_timesteps = timesteps)
