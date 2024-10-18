@@ -152,17 +152,31 @@ Top-p sets all logits except the largest several logits to -inf. The largest sev
 
 #### pros
 
-- no finetuning. save time for training
+- no finetuning. save time for training.
 
-- 
+- human readable intuitive prompt text.
 
-#### cons
+- support for specific task optimization by prompt engineering.
+
+#### cons (challenges)
+
+- limited flexibility.
+
+- a high cost of prompt designing.
+
+- strong reliance on models. switching LLM leads to prompt redesign.
 
 ### soft prompt
 
 #### pros
 
-#### cons
+- strong flexibility in handling different scenarios
+
+#### cons (challenges)
+
+- strong reliance on models. switching LLM leads to retraining soft prompting.
+
+- poor performance when training with small dataset.
 
 # Pantheon Lab Programming Assignment
 
