@@ -40,6 +40,6 @@ class Diffusion(nn.Module):
       for t in reversed(range(self.noise_scheduler.num_train_timesteps)):
         model_output = self.model(noise, t).sample # epsilon(x_t, t)
         noise = self.noise_scheduler.step(model_output, t, noise).prev_sample # x_{t-1}
-    image = ((input + 1) * 127.5).squeeze(dim = 0).to(torch.uint8)
+    image = ((noise + 1.) * 127.5).squeeze(dim = 0).to(torch.uint8)
     image = torch.permute(image, (1,2,0)).cpu().numpy()
     return image
