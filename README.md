@@ -96,20 +96,7 @@ prompt: write a poem in Chinese.
 
 | id  |  answer |
 |-----|---------|
-| 1   | <span style="font-family: Arial; font-size: 14px;">月亮升起在夜空
-星星闪烁如钻石
-城市的灯光如河流
-夜晚的美丽如梦境
-
-月光下的街道如银河
-人影如幽灵般飘过
-夜晚的城市如一首歌
-美丽如诗般的旋律
-
-夜晚的风如情人的呼吸
-轻轻地吹拂我的脸
-城市的夜晚如一幅画
-美丽如艺术般的杰作</span> |
+| 1   | 月亮升起在夜空<br/>星星闪烁如钻石<br/>城市的灯光如河流<br/>夜晚的美丽如梦境<br/><br/>月光下的街道如银河<br/>人影如幽灵般飘过<br/>夜晚的城市如一首歌<br/>美丽如诗般的旋律<br/><br/>夜晚的风如情人的呼吸<br/>轻轻地吹拂我的脸<br/>城市的夜晚如一幅画<br/>美丽如艺术般的杰作<br/> |
 | 2   | The night view of this city is breathtakingly beautiful, as if you have entered a dreamlike world. |
 | 3   | The city's night view is breathtakingly beautiful, as if I've entered a dreamlike world. |
 
