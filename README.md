@@ -52,15 +52,7 @@ prompt: An empty bus has 10 passengers on the first stop. At the next stop, 5 pa
 |----|--------|
 | 1  | The bus passed 3 stops in total.       |
 | 2  | The bus passed a total of 3 stops. The first stop where 10 passengers got on, the second stop where 5 passengers got on and 7 got off, and the third stop where 3 passengers got on and 1 got off.       |
-| 3  | Let's analyze the information:
-
-    The bus starts empty, then 10 passengers get on at the first stop.
-    At the next stop, 5 passengers get on and 7 passengers get off, leaving 10 + 5 - 7 = 8 passengers on the bus.
-    At the next stop, 3 passengers get on and 1 passenger gets off, leaving 8 + 3 - 1 = 10 passengers on the bus.
-
-Since the bus has 10 passengers on it again, and we've already counted the first stop, we can conclude that the bus has passed a total of 3 stops.
-
-Answer: 3 stops. |
+| 3  | Let's analyze the information:<br/><br/>    The bus starts empty, then 10 passengers get on at the first stop.<br/>    At the next stop, 5 passengers get on and 7 passengers get off, leaving 10 + 5 - 7 = 8 passengers on the bus.<br/>    At the next stop, 3 passengers get on and 1 passenger gets off, leaving 8 + 3 - 1 = 10 passengers on the bus.<br/><br/>Since the bus has 10 passengers on it again, and we've already counted the first stop, we can conclude that the bus has passed a total of 3 stops.<br/><br/>Answer: 3 stops. |
 
 ### logical reasoning ability
 
@@ -68,24 +60,9 @@ prompt: My sister was twice my age when I was 2 years old. How old will my siste
 
 | id | answer |
 |----|--------|
-| 1  | When you were 2 years old, your sister was 2 x 2 = 4 years old.
-
-The age difference between you and your sister is 4 - 2 = 2 years.
-
-When you are 30 years old, your sister will be 30 + 2 = 32 years old. |
+| 1  | When you were 2 years old, your sister was 2 x 2 = 4 years old.<br/><br/>The age difference between you and your sister is 4 - 2 = 2 years.<br/><br/>When you are 30 years old, your sister will be 30 + 2 = 32 years old. |
 | 2  | When you were 2 years old, your sister was twice your age, which means she was 4 years old. The age difference between you and your sister is 2 years. Therefore, when you are 30 years old, your sister will be 32 years old. |
-| 3  | 
-
-A nice age-related puzzle!
-
-Let's break it down step by step:
-
-    When you were 2 years old, your sister was twice your age, which means she was 2 x 2 = 4 years old.
-    Now, let's find the age difference between you and your sister: 4 (her age) - 2 (your age) = 2 years.
-    This means that your sister is always 2 years older than you.
-    Fast forward to when you are 30 years old. To find your sister's age, add the age difference to your age: 30 + 2 = 32.
-
-So, when you are 30 years old, your sister will be 32 years old. |
+| 3  | A nice age-related puzzle!<br/><br/>Let's break it down step by step:<br/><br/>    When you were 2 years old, your sister was twice your age, which means she was 2 x 2 = 4 years old.<br/>    Now, let's find the age difference between you and your sister: 4 (her age) - 2 (your age) = 2 years.<br/>    This means that your sister is always 2 years older than you.<br/>    Fast forward to when you are 30 years old. To find your sister's age, add the age difference to your age: 30 + 2 = 32.<br/><br/>So, when you are 30 years old, your sister will be 32 years old.|
 
 ### hallucination detection
 
